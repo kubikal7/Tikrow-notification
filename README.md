@@ -4,8 +4,7 @@ The program is used to send notifications to the e-mail address(es) when an offe
 The program is a console application. Notifications work when the app is running and successfully logged in.
 
 ## How run?
-
-If you download .jar file, remember you need have at least [Java JDK 17](https://www.oracle.com/java/technologies/downloads/) installed.
+The program requires Google Chrome installed as the program uses ChromeDriver and at least [Java JDK 17](https://www.oracle.com/java/technologies/downloads/) installed. An internet connection is also required. 
 
 You can check Java version:
 

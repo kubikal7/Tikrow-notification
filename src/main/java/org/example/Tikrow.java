@@ -55,7 +55,7 @@ public class Tikrow {
         if(numberOfOffers!=0){
             List<String> availableTemp = listOfHrefsTemp.subList(0,numberOfOffers);
             System.out.println(language.getString("available")+availableTemp);
-            if(Collections.disjoint(lastAvailable,availableTemp)) {
+            if(!sameLists(new ArrayList<>(lastAvailable),availableTemp)) {
                 System.out.println(language.getString("email-sent"));
                 Mail.send(mailTo, "Tikrow", language.getString("new-offer"));
                 lastAvailable.clear();
@@ -83,5 +83,21 @@ public class Tikrow {
         java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
 
         return new ChromeDriver(options);
+    }
+
+    public boolean sameLists(List<String>list1,List<String>list2){
+        for(int i=0;i<list2.size();i++){
+            int sum=0;
+            for(int j=0;j<list1.size();j++){
+                if(list2.get(i).equals(list1.get(j))){
+                    sum++;
+                }
+            }
+            if(sum==0){
+                return false;
+            }
+        }
+
+        return true;
     }
 }

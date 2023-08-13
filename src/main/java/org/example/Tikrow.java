@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,11 +20,12 @@ import java.util.stream.Collectors;
 
 public class Tikrow {
     ResourceBundle language=Language.LANGUAGE;
+    Scanner scanner = new Scanner(System.in);
     public void doLogin(WebDriver driver){
         do {
             WebElement loginInput = new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.visibilityOfElementLocated(By.name("login")));
             System.out.print(language.getString("login")+"\nLogin: ");
-            String login = System.console().readLine();
+            String login = scanner.next();
             loginInput.sendKeys(login);
 
             WebElement passwordInput = driver.findElement(By.name("password"));
@@ -75,7 +78,7 @@ public class Tikrow {
         listOfHrefs.addAll(listOfHrefsTemp);
     }
 
-    public WebDriver getDriver(){
+    public WebDriver getChromeDriver(){
         System.setProperty("webdriver.chrome.drive", "src/main/resources/chromedriver.exe");
         System.setProperty("webdriver.chrome.silentOutput", "true");
         ChromeOptions options=new ChromeOptions();
@@ -83,6 +86,13 @@ public class Tikrow {
         java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
 
         return new ChromeDriver(options);
+    }
+
+    public WebDriver getFirefoxDriver(){
+        System.setProperty("webdriver.gecko.drive", "src/main/resources/geckodriver.exe");
+        FirefoxOptions options=new FirefoxOptions();
+        options.addArguments("--headless");
+        return new FirefoxDriver(options);
     }
 
     public boolean sameLists(List<String>list1,List<String>list2){

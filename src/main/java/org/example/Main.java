@@ -20,19 +20,20 @@ public class Main {
         ResourceBundle language=Language.LANGUAGE; //static variable from Language class to local variable in order to make easier later in sout
 
         Tikrow tikrow=new Tikrow(); //object Tikrow which contains necessary functions
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println(language.getString("start"));
 
-        WebDriver driver = tikrow.getDriver(); //creates driver with special options
-        System.out.println(language.getString("initial-info"));
+        WebDriver driver = tikrow.getFirefoxDriver(); //creates driver with special options
+        System.out.print(language.getString("initial-info"));
         System.console().readLine();
-        System.out.println(language.getString("wait"));
+        System.out.println(language.getString("wait")+"\n");
 
         driver.navigate().to("https://partner.tikrow.com/");
         tikrow.doLogin(driver); //login on site tikrow.com
 
         System.out.print(language.getString("mail"));
-        String mailTo=System.console().readLine(); //takes emails to which notification should be sent e.g. example@example.com or example1@example.com,example2@example.com
+        String mailTo = scanner.next(); //takes emails to which notification should be sent e.g. example@example.com or example1@example.com,example2@example.com
 
         System.out.print("\n");
         Set<String> listOfHrefs = new HashSet<>();

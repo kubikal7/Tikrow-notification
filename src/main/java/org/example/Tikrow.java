@@ -2,6 +2,7 @@ package org.example;
 
 import jakarta.mail.MessagingException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -79,17 +80,14 @@ public class Tikrow {
     }
 
     public WebDriver getChromeDriver(){
-        System.setProperty("webdriver.chrome.drive", "src/main/resources/chromedriver.exe");
         System.setProperty("webdriver.chrome.silentOutput", "true");
         ChromeOptions options=new ChromeOptions();
         options.addArguments("--headless");
         java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
-
         return new ChromeDriver(options);
     }
 
     public WebDriver getFirefoxDriver(){
-        System.setProperty("webdriver.gecko.drive", "src/main/resources/geckodriver.exe");
         FirefoxOptions options=new FirefoxOptions();
         options.addArguments("--headless");
         return new FirefoxDriver(options);

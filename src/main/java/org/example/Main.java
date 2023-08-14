@@ -24,7 +24,8 @@ public class Main {
 
         System.out.println(language.getString("start"));
 
-        WebDriver driver = tikrow.getFirefoxDriver(); //creates driver with special options
+
+        WebDriver driver = tikrow.getChromeDriver(); //creates driver with special options
         System.out.print(language.getString("initial-info"));
         System.console().readLine();
         System.out.println(language.getString("wait")+"\n");

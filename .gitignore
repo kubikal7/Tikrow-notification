@@ -1,6 +1,7 @@
 .idea
 out
 target
+Tikrow-jars
 # Compiled class file
 *.class
 
